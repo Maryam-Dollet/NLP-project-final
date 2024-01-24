@@ -11,6 +11,16 @@ from nltk.tokenize import word_tokenize
 from nltk import ngrams
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.linear_model import SGDClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from lightgbm import LGBMClassifier
 from umap import UMAP
 from hdbscan import HDBSCAN
 import pyLDAvis
@@ -223,5 +233,122 @@ def hdbscan_cluster_2(df):
     return df
 
 # For Whatever reason need to install punkt for chatbot
+@st.cache_data
 def punkt():
     nltk.download('punkt')
+
+
+@st.cache_data
+def supervised_sklearn(vectors_df):
+    df_shuffled = vectors_df.sample(frac = 1)
+
+    y = df_shuffled["category"]
+    X = df_shuffled.drop(columns=["category"])
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=2)
+
+    model_dict = {}
+
+    model_dict.update(SVM_train(X_train, X_test, y_train, y_test))
+    model_dict.update(GaussianNB_train(X_train, X_test, y_train, y_test))
+    model_dict.update(SGDClassifier_train(X_train, X_test, y_train, y_test))
+    model_dict.update(KNeighborsClassifier_train(X_train, X_test, y_train, y_test))
+    model_dict.update(DecisionTreeClassifier_train(X_train, X_test, y_train, y_test))
+    model_dict.update(RandomForestClassifier_train(X_train, X_test, y_train, y_test))
+    model_dict.update(GradientBoostingClassifier_train(X_train, X_test, y_train, y_test))
+    model_dict.update(LGBMClassifier_train(X_train, X_test, y_train, y_test))
+
+    return model_dict
+
+
+@st.cache_data
+def SVM_train(X_train, X_test, y_train, y_test):
+    svm = SVC(kernel = 'linear', random_state = 0)
+    svm.fit(X_train, y_train)
+    #Prediction sur le Test set
+    y_pred = svm.predict(X_test)
+
+    # st.markdown("SVM")
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"SVM": df_a}
+
+
+@st.cache_data
+def GaussianNB_train(X_train, X_test, y_train, y_test):
+    nb = GaussianNB()
+    nb.fit(X_train, y_train)
+    y_pred = nb.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"GaussianNB": df_a}
+
+
+@st.cache_data
+def SGDClassifier_train(X_train, X_test, y_train, y_test):
+    clf = SGDClassifier(loss="log_loss", penalty="l2")
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"SGDClassifier": df_a}
+
+
+@st.cache_data
+def KNeighborsClassifier_train(X_train, X_test, y_train, y_test):
+    knn_clf=KNeighborsClassifier(n_neighbors=150)
+    knn_clf.fit(X_train,y_train)
+    y_pred=knn_clf.predict(X_test)
+    a=classification_report(y_test, y_pred, output_dict=True)
+
+    df_a = pd.DataFrame(a).T
+    return {"KNeighborsClassifier": df_a}
+
+
+@st.cache_data
+def DecisionTreeClassifier_train(X_train, X_test, y_train, y_test):
+    # Create Decision Tree classifer object
+    clf = DecisionTreeClassifier(criterion="entropy", max_depth=10)
+    # Train Decision Tree Classifer
+    clf = clf.fit(X_train,y_train)
+    #Predict the response for test dataset
+    y_pred = clf.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"DecisionTreeClassifier": df_a}
+
+
+@st.cache_data
+def RandomForestClassifier_train(X_train, X_test, y_train, y_test):
+    rf = RandomForestClassifier(max_depth=13, n_estimators=393)
+    rf.fit(X_train, y_train)
+    y_pred = rf.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"RandomForestClassifier": df_a}
+
+
+@st.cache_data
+def GradientBoostingClassifier_train(X_train, X_test, y_train, y_test):
+    clf = GradientBoostingClassifier(n_estimators=100, learning_rate=1.0,  max_depth=1, random_state=0)
+    clf.fit(X_train, y_train)
+    y_pred = clf.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"GradientBoostingClassifier": df_a}
+
+
+@st.cache_data
+def LGBMClassifier_train(X_train, X_test, y_train, y_test):
+    clf = LGBMClassifier()
+    clf.fit(X_train, y_train)
+    y_pred=clf.predict(X_test)
+
+    a=classification_report(y_test, y_pred, output_dict=True)
+    df_a = pd.DataFrame(a).T
+    return {"LGBMClassifier": df_a}
