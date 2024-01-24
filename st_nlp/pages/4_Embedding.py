@@ -127,5 +127,3 @@ st.image("img/w2v_tensorboard.png")
 st.markdown("#### Augmented Model")
 
 st.image("img/glove_tensorboard.png")
-
-st.subheader("Analysis")

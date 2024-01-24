@@ -11,6 +11,8 @@ result6 = get_UMAP(glove)
 
 st.header("Using UMAP and HDBScan for Clustering")
 
+st.write('We selected UMAP for the clustering for the reason described in “Embedding”. We then used HDBScan to identify clusters in the 3D scatterplot. DBSCAN also identifies Outliers : they are values which are not part of any cluster according to the algorithm.')
+
 hdbscan_df1 = hdbscan_cluster(result5)
 hdbscan_df1['category'] = hdbscan_df1['category'].replace('-1' ,'outlier')
 # st.dataframe(hdbscan_df1)
