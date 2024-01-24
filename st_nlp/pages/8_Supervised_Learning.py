@@ -10,7 +10,7 @@ category_count = df["category"].value_counts().reset_index()
 
 st.header("Supervised Learning")
 
-st.write("In this first section we try to predict using our trustpilot company description data to predict the category of a given description.")
+st.write("In this first section we try to predict using our trustpilot company description data, the category of a given description.")
 st.write("if we import the transformed data, we can see that there is a class imbalance:")
 
 fig = px.bar(category_count, x="category", y="count", title="Number of Companies per Category", height=500, width=800)
