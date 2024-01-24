@@ -20,7 +20,7 @@ if st.button("Get similar doc:"):
     best_match = [int(x) for x in best_match]
     st.dataframe(df[df['tag'].isin(best_match[:5])])
 
-st.markdown("### UMAP")
+st.markdown("### UMAP Visualization")
 
 df_umap = get_UMAP_d2v(d2v, df)
 
