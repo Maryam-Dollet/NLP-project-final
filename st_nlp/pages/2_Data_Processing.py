@@ -15,7 +15,7 @@ st.write("https://github.com/Maryam-Dollet/NLP_Project/blob/main/data_cleaning.i
 
 st.subheader("First Cleaning")
 
-st.write("In the descriptions and the reviews there are emojis and other punctuations which make the data unclean. This is why we need to clean it.")
+st.write("Descriptions and comments contain emojis and other punctuation marks that render the data impure. That's why we have to clean them up.")
 st.write("To do this, we used the clean-text library: https://pypi.org/project/clean-text/")
 
 st.write()
