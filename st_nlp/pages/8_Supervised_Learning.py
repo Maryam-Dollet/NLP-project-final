@@ -10,7 +10,7 @@ category_count = df["category"].value_counts().reset_index()
 
 st.header("Supervised Learning")
 
-st.write("In this section we try to predict using our trustpilot company description data to predict the category of a given description.")
+st.write("In this first section we try to predict using our trustpilot company description data to predict the category of a given description.")
 st.write("if we import the transformed data, we can see that there is a class imbalance:")
 
 fig = px.bar(category_count, x="category", y="count", title="Number of Companies per Category", height=500, width=800)
@@ -57,4 +57,32 @@ st.image("img/bert_results.png")
 st.write("If we look closely there are categories which accuracy is quite good, for some like business_services or events_entertainment the results are bad, this can be due to the lack of variety of word usage which makes those categories not destinguishable from others.")
 st.write("Another Hypothesis would be the quality of data that is present on Trustpilot. Indeed, there are companies which could be from several companies, but are only listed in one. For example, Shin Sekai a store which supplies japanese products like food but also leisure items, is categorized in food_beverages_tabacco.")
 st.write("To improve this model we can try to train it for more that one epoch to see if the accuracy improves, or we can do a data augmentation for the other categories.")
+
+st.subheader("Prediction of the number of stars using LSTM")
+
+st.markdown("#### Selecting a part of the data:")
+st.write("The first decision was to keep only the reviews of the first 1000 companies with the most reviews, to be able to get a good representation of the popularity of a company through its reviews.")
+st.write("The language:")
+st.write("The reviews being in majority in french (we had a few english or foreign languages reviews too), we decided to only keep the french ones for a better analysis of our dataset. The computational cost of translating all the reviews in english was too high for this option to be considered.")
+st.write("For this function, we used wordpunct_tokenize and stopwords to create a new column in the dataset indicating the language having the most words in the review column.")
+
+st.markdown("#### Balancing the dataset :")
+st.write("We observed that we had an unbalanced dataset as follows :")
+st.image("img/score_count.png")
+
+st.write("We used Under-sampling and decided to keep 1114 random reviews of each class of notation ")
+
+st.markdown("#### One-hot encoding:")
+st.write("We one-hot encoded the number of stars of the ratings (our labels) as follows:")
+st.write("1 => [1,0,0,0,0]")
+st.write("4 => [0,0,0,1,0]")
+
+st.write("Tokenizer and padding (/truncating) :")
+st.write("For the input data to be a vector of the same length for each review")
+
+st.markdown("#### The model:")
+st.write("It is a sequential neural network with an embedding layer,a spatial dropout to help prevent overfitting, and an LSTM layer for sequence processing. It predicts scores for reviews through a softmax activation (for multi-class classification).")
+
+st.write("Results of this model:")
+st.write("We are not exactly sure about the reason why we have such bad results. It could be a lack of data, but we rather think there is a problem in the model we created or with the format of data used. However, we found this approach interesting enough to put it in this streamlit.")
 
