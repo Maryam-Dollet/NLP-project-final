@@ -12,6 +12,7 @@ st.write("file: embedding.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP_Project/blob/main/embedding.ipynb")
 st.subheader("Word2Vec Training")
 
+st.write("We perform embedding with Word2Vec. Word2Vec captures the various characteristics of words, transforming them into 300-parameter vectors.")
 st.write("We used the gensim library to train a Word2Vec on our tokenized description tokens.")
 
 st.subheader("GloVe Model Augmentation")
@@ -35,6 +36,8 @@ if st.button("Get similarity for Word2Vec"):
             st.write(get_similarity(glove, request1))
         except:
             st.write("An error has occured, the word is not in the model")
+
+st.write("We will now perform dimension reduction algorithms to visualize the embeddings. PCA, TSNE and UMAP are dimension reduction techniques that project our words in n dimensional space. In our case we chose to project on 2 dimensions")
 
 st.subheader("PCA Visualisation")
 
@@ -84,7 +87,9 @@ fig_3d.update_layout(width=1300 ,height=1000)
 fig_3d.update_traces(marker_size=2)
 st.plotly_chart(fig_3d)
 
-st.subheader("UMAP")
+st.subheader("UMAP Visualization")
+
+st.write("In our case, the most performant technique is UMAP, as it allows us to better visualize tokens groupings in this 3 dimensional space")
 
 st.markdown("#### Word2Vec")
 
