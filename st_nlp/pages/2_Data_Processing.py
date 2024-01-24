@@ -26,7 +26,7 @@ st.dataframe(df[["company_name", "description", "score"]], use_container_width=T
 st.subheader("Translation: Company Description")
 
 st.write("The library used to translate the texts: https://pypi.org/project/deep-translator/")
-st.write("First we translated the french company description to english, we took the unique company names from the reviews data. In result, we had to translate a maximum of 12996 descriptions without taking into account the pages where the description is lacking. To translate without errors we had to drop the rows without description data")
+st.write("First we translated the French company description to English, we took the unique company names from the reviews data. In the result, we had to translate a maximum of 12996 descriptions without taking into account the pages where the description is lacking. To translate without errors, we had to drop the rows without description data")
 
 st.dataframe(df2)
 

@@ -8,7 +8,7 @@ st.title("Semantic Search Using Doc2Vec")
 st.write("file: semantic_search2.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP_Project/blob/main/semantic_search2.ipynb")
 
-st.write("To be able to make a similarity search of documents with a sentence, we trained a Doc2Vec with each description of a company having a tag. This enables us to search the company that matches the best the request")
+st.write("To be able to perform a similarity search between documents containing a sentence, we trained a Doc2Vec with each description of a company having a tag. This enables us to search for the companies that are the best suited for the requests")
 
 st.dataframe(df)
 
