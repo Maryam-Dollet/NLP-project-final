@@ -16,6 +16,9 @@ lda, html_string, topic_words = LDA(corpus, 10)
 with st.expander("Raw LDA"):
     st.write(lda.print_topics())
 
+st.write("Topic modeling involves counting words and grouping similar word patterns to describe topics within the data. If the model knows the word frequency, and which words often appear in the same document, it will discover patterns that can group different words together.")
+st.write("Here we can see the 10 Topics that came from the LDA Topic Modeling")
+
 topic_words["pos"] = topic_words["topic"].apply(lambda x: 1 if x%2 == 0 else 2)
 # st.write(topic_words.sort_values("topic"))
 
