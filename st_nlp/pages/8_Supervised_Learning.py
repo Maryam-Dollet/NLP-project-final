@@ -77,7 +77,7 @@ st.write("We one-hot encoded the number of stars of the ratings (our labels) as 
 st.write("1 => [1,0,0,0,0]")
 st.write("4 => [0,0,0,1,0]")
 
-st.write("Tokenizer and padding (/truncating) :")
+st.markdown("#### Tokenizer and padding (/truncating) :")
 st.write("For the input data to be a vector of the same length for each review")
 
 st.markdown("#### The model:")
