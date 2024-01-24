@@ -45,7 +45,6 @@ selected_model = st.selectbox("Choose ML Classification Model", keysList)
 
 st.dataframe(models[selected_model], height=600, use_container_width=True)
 
-
 st.subheader("Category Classification using BERT Model")
 st.write("file: BERT_classification.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP-project-final/blob/main/supervised_sklearn.ipynb")

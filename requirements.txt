@@ -1,5 +1,6 @@
 gensim==4.3.2
 hdbscan
+lightgbm==4.2.0
 matplotlib==3.8.2
 nltk==3.8.1
 pandas==2.1.4
