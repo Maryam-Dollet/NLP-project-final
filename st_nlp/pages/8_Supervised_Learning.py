@@ -57,3 +57,4 @@ st.image("img/bert_results.png")
 st.write("If we look closely there are categories which accuracy is quite good, for some like business_services or events_entertainment the results are bad, this can be due to the lack of variety of word usage which makes those categories not destinguishable from others.")
 st.write("Another Hypothesis would be the quality of data that is present on Trustpilot. Indeed, there are companies which could be from several companies, but are only listed in one. For example, Shin Sekai a store which supplies japanese products like food but also leisure items, is categorized in food_beverages_tabacco.")
 st.write("To improve this model we can try to train it for more that one epoch to see if the accuracy improves, or we can do a data augmentation for the other categories.")
+

@@ -38,3 +38,7 @@ fig_3d.update_layout(width=1300 ,height=1000)
 fig_3d.update_traces(marker_size=3)
 fig_3d.update_traces(visible="legendonly", selector=lambda t: not t.name in cluster_df["category"].unique())
 st.plotly_chart(fig_3d)
+
+st.markdown("### Analysis of the UMAP DBSCAN Clustering:")
+st.write("If we remove the outliers on the graph we can observe by looking at the points in the same cluster that there are different categories of companies which are close to one another. \
+         This could mean that the data is not representative enough for the Doc2Vec to be more precise. We can also hypothesize that it is the lack of meaningful variety that could contribute to the limitation")

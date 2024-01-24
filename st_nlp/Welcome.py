@@ -18,6 +18,7 @@ st.markdown("We tried out the new Chatbot function of Streamlit with the Semanti
 st.markdown("Finally, our project ends with three Supervised Leaning tasks:")
 st.markdown("- In the first part we tried to see what performance we would get by using Scikit-Learn Classification models to predict the categories")
 st.markdown("- In the second part, we finetuned a BERT model with our company description data to predict the categories as well.")
+st.markdown("- the third part, uses a Multi class classification model with LSTM to predict the scores given by users to brands based on the reviews they leave on the website.")
 
 st.markdown("### Encountered Complications")
 st.markdown("During our work we encountered a problem with the LFS file system and had reached the limit of the bandwidth. In consequence we could not continue to push our code and had to make another repository for the rest of our project.")
