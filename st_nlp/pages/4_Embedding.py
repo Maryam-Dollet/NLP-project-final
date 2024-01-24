@@ -1,8 +1,13 @@
 import streamlit as st
 import plotly_express as px
 import plotly.graph_objects as go
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-from cache_func import load_model, get_similarity, get_PCA, get_TSNE, get_UMAP
+from cache_func import load_model, get_similarity, get_PCA, get_TSNE, get_UMAP, tsnescatterplot
+
+sns.set_style("darkgrid")
+# plt.style.use("classic")
 
 w2v = load_model('models/w2v_company_desc_model')
 glove = load_model('models/glove_transfer')
@@ -86,6 +91,23 @@ fig_3d = px.scatter_3d(
 fig_3d.update_layout(width=1300 ,height=1000)
 fig_3d.update_traces(marker_size=2)
 st.plotly_chart(fig_3d)
+
+st.subheader("Focus on Specific Token for Comparison")
+st.write("For ['dog', 'bird', 'offer', 'help', 'france', 'fruit', 'meat', 'love'] and manga")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.write("Word2Vec")
+    fig = tsnescatterplot(w2v, "manga", ['dog', 'bird', 'offer', 'help', 'france', 'fruit', 'meat', 'love'])
+    st.pyplot(fig)
+
+with col2:
+    st.write("Word2Vec + Glove")
+    fig = tsnescatterplot(glove, "manga", ['dog', 'bird', 'offer', 'help', 'france', 'fruit', 'meat', 'love'])
+    st.pyplot(fig)
+
+st.write('In these visualizations, we project in 2 dimensions a token selected in Red, and a few other tokens. These models define in Blue the most corresponding tokens among them. The green ones are less correlated to the selected token.')
 
 st.subheader("UMAP Visualization")
 
