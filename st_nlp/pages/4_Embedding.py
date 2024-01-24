@@ -101,8 +101,6 @@ st.plotly_chart(fig_3d)
 st.markdown("#### Augmented Model")
 
 result6 = get_UMAP(glove)
-# st.dataframe(result6)
-# st.write(list(result6[["x", "y", "z"]].values))
 
 fig_3d = px.scatter_3d(
     result6, x="x", y="y", z="z", hover_name="word"

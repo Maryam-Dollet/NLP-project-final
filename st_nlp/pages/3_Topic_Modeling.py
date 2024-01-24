@@ -40,3 +40,7 @@ with col2:
 
 st.subheader("pyLDAvis Visualization")
 components.v1.html(html_string, width=1300, height=800)
+
+st.markdown("#### Interpretation")
+st.write("Each bubble represents a topic. The larger the bubble, the higher percentage of the number of company descriptions in the corpus is about that topic.")
+
