@@ -45,6 +45,8 @@ selected_model = st.selectbox("Choose ML Classification Model", keysList)
 
 st.dataframe(models[selected_model], height=600, use_container_width=True)
 
+st.write("We can observe that the classic Machine Learning Classification models dot not achieve great performance...")
+
 st.subheader("Category Classification using BERT Model")
 st.write("file: BERT_classification.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP-project-final/blob/main/supervised_sklearn.ipynb")
@@ -59,6 +61,8 @@ st.write("Another Hypothesis would be the quality of data that is present on Tru
 st.write("To improve this model we can try to train it for more that one epoch to see if the accuracy improves, or we can do a data augmentation for the other categories.")
 
 st.subheader("Prediction of the number of stars using LSTM")
+st.write("file: supervised_learning_LSTM_review_ratings.ipynb")
+st.write("https://github.com/Maryam-Dollet/NLP-project-final/blob/main/supervised_learning_LSTM_review_ratings.ipynb")
 
 st.markdown("#### Selecting a part of the data:")
 st.write("The first decision was to keep only the reviews of the first 1000 companies with the most reviews, to be able to get a good representation of the popularity of a company through its reviews.")
