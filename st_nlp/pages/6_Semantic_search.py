@@ -29,7 +29,7 @@ st.dataframe(df_umap)
 cluster_df = hdbscan_cluster_2(df_umap)
 
 cluster_df['category'] = cluster_df['category'].replace('-1' ,'outlier')
-st.write(f"Number of Ouliers Detected: {len(cluster_df[cluster_df['category'] == 'outlier'])} out of {len(cluster_df)}")
+st.write(f"Number of Outliers Detected: {len(cluster_df[cluster_df['category'] == 'outlier'])} out of {len(cluster_df)}")
 
 fig_3d = px.scatter_3d(
     cluster_df, x="x", y="y", z="z", hover_data=cluster_df[["word", "cat"]], color="category"

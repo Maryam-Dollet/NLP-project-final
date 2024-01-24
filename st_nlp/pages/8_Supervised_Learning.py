@@ -32,7 +32,7 @@ vectors = [d2v.dv[tag] for tag in tags]
 vectors_df = pd.DataFrame(vectors)
 vectors_df["category"] = category
 
-st.subheader("Classification Machine Learning Using Scikit-Learn")
+st.subheader("Classification of companies' category using Scikit-Learn Models")
 st.write("file: supervised_sklearn.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP-project-final/blob/main/BERT_classification.ipynb")
 
