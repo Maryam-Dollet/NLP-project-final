@@ -140,6 +140,7 @@ st.plotly_chart(fig_3d)
 st.subheader("Tensorboard")
 
 st.write("We loaded the tsv metadata and vector files in: https://projector.tensorflow.org/")
+st.write('The files are located in the folder "tensorboard_data", https://github.com/Maryam-Dollet/NLP-project-final/tree/main/tensorboard_data')
 st.write("We used UMAP to visualise the closest points of each model")
 
 st.markdown("#### Word2Vec")
