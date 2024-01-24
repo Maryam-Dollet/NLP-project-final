@@ -16,7 +16,7 @@ st.write("if we import the transformed data, we can see that there is a class im
 fig = px.bar(category_count, x="category", y="count", title="Number of Companies per Category", height=500, width=800)
 st.plotly_chart(fig)
 
-st.write("So we decides to take categories which have at least 400 company descriptions. These are the categories which answer the condition.")
+st.write("So we decided to take categories which have at least 400 company descriptions. These are the categories which answer the condition.")
 
 category_list = list(category_count[category_count["count"] >= 400]["category"])
 st.write(category_list)
@@ -52,6 +52,20 @@ st.write("file: BERT_classification.ipynb")
 st.write("https://github.com/Maryam-Dollet/NLP-project-final/blob/main/supervised_sklearn.ipynb")
 
 st.write("We tried to finetune a BERT model with Pytorch with our company description data to also predict the categories of a description. It took a lot of time with colab so we only trained it for one epoch which tool several hours.")
+
+st.markdown("#### Data Preparation:")
+
+st.write("We encoded the labels as follows: ")
+st.image("img/bert_encoding.png")
+
+st.write("With train_test_split, we split the data into a test and training set with test size of 15%.")
+st.image("img/train_test.png")
+
+st.write("To tokenize, we used **BertTokenizer** from the transformers library")
+
+st.markdown('The model imported is **BertForSequenceClassification**, which is pretrained.')
+
+st.markdown("#### Results:")
 st.write("Here are the accuracies per category")
 
 st.image("img/bert_results.png")
