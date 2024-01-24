@@ -83,6 +83,6 @@ st.write("For the input data to be a vector of the same length for each review")
 st.markdown("#### The model:")
 st.write("It is a sequential neural network with an embedding layer,a spatial dropout to help prevent overfitting, and an LSTM layer for sequence processing. It predicts scores for reviews through a softmax activation (for multi-class classification).")
 
-st.write("Results of this model:")
+st.markdown("#### Results of this model:")
 st.write("We are not exactly sure about the reason why we have such bad results. It could be a lack of data, but we rather think there is a problem in the model we created or with the format of data used. However, we found this approach interesting enough to put it in this streamlit.")
 
